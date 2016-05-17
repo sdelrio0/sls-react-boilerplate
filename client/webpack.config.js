@@ -10,8 +10,8 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app:   path.join(__dirname, 'app'),
   style: [
-    path.join(__dirname, 'node_modules', 'purecss'),
-    path.join(__dirname, 'app', 'main.css')
+    //path.join(__dirname, 'node_modules', 'purecss'),
+    path.join(__dirname, 'app', 'styles', 'main.scss')
   ],
   build: path.join(__dirname, 'dist')
 };
@@ -35,14 +35,13 @@ const common = {
     loaders: [
       {
         test: /\.jsx?$/,
-        // Enable caching for improved performance during development
-        // It uses default OS directory by default. If you need something
-        // more custom, pass a path to it. I.e., babel?cacheDirectory=<path>
         loaders: ['babel?cacheDirectory'],
-        // Parse only app files! Without this it will go through entire project.
-        // In addition to being slow, that will most likely result in an error.
         include: PATHS.app
-      }
+      },
+      { test: /\.woff$/,   loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.ttf$/,    loader: "file-loader" },
+      { test: /\.eot$/,    loader: "file-loader" },
+      { test: /\.svg$/,    loader: "file-loader" }
     ]
   },
   plugins: [
@@ -53,6 +52,8 @@ const common = {
 };
 
 var config;
+
+process.env.BABEL_ENV = TARGET;
 
 switch(TARGET) {
   case 'stats':
@@ -91,6 +92,7 @@ switch(TARGET) {
         devtool: 'source-map'
       },
       parts.setupCSS(PATHS.style),
+      parts.reactPerf(),
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT

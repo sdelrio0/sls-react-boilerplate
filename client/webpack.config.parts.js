@@ -48,8 +48,8 @@ exports.setupCSS = function(paths) {
     module: {
       loaders: [
         {
-          test: /\.css$/,
-          loaders: ['style', 'css'],
+          test: /\.scss$/,
+          loaders: ['style', 'css', 'sass'],
           include: paths
         }
       ]
@@ -134,8 +134,8 @@ exports.extractCSS = function(paths) {
       loaders: [
         // Extract CSS during build
         {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract('style', 'css'),
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('style', 'css!sass'),
           include: paths
         }
       ]
@@ -159,5 +159,25 @@ exports.purifyCSS = function(paths) {
         paths: paths
       })
     ]
+  };
+};
+
+// React performance utilities
+/*
+ // Add to entry point:
+ if(process.env.NODE_ENV !== 'production') {
+  React.Perf = require('react-addons-perf');
+ }
+ */
+exports.reactPerf = function() {
+  return {
+    module: {
+      loaders: [
+        {
+          test: require.resolve('react'),
+          loader: 'expose?React'
+        }
+      ]
+    }
   };
 };

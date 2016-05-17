@@ -1,5 +1,5 @@
 {
-  "name": "xio-landing-sls",
+  "name": "sls-react-boilerplate",
   "version": "0.0.1",
   "description": "A Serverless Project and its Serverless Plugin dependencies.",
   "author": "me",
@@ -7,11 +7,17 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/"
+    "url": "https://github.com/sdelrio0/sls-react-boilerplate.git"
   },
   "scripts": {},
   "dependencies": {
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
     "serverless-client-s3": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-preset-react-hmre": "^1.1.1",
+    "expose-loader": "^0.7.1",
+    "react-addons-perf": "^15.0.2"
+  }
 }
