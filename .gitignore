@@ -41,6 +41,3 @@ admin.env
 
 #Ignore _meta folder
 _meta
-
-# Client directory
-# client/node_modules
