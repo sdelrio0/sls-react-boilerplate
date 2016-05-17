@@ -1,5 +1,11 @@
 {
   "name": "xio-landing-sls",
-  "custom": {},
-  "plugins": []
+  "custom": {
+    "client": {
+      "bucketName": "xio-landing-sls"
+    }
+  },
+  "plugins": [
+    "serverless-client-s3"
+  ]
 }

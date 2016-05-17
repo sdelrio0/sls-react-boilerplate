@@ -9,5 +9,9 @@
     "type": "git",
     "url": "git://github.com/"
   },
-  "dependencies": {}
+  "scripts": {},
+  "dependencies": {
+    "serverless-client-s3": "^2.0.0"
+  },
+  "devDependencies": {}
 }
