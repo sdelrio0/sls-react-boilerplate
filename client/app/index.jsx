@@ -11,8 +11,8 @@ container.className = 'container';
 document.body.appendChild(container);
 
 // React Performance utilities
-if(process.env.NODE_ENV !== 'production') {
-  React.Perf = require('react-addons-perf');
-}
+//if(process.env.NODE_ENV !== 'production') {
+//  React.Perf = require('react-addons-perf');
+//}
 
 ReactDOM.render(<App />, container);
